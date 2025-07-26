@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registration</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div>
+            <h2>Login</h2>
+            <form name="user" method="post">
+                <input type="text" name="fname" id="fullname" placeholder="Enter your Full Name" required>
+                <input type="password" name="password" id="password" placeholder="Enter your Strong Passowrd" required>
+
+                <button class="btnClass" type="button" name="submit" onclick="submitData()">Submit</button>
+                <button class="btnClass" type="reset" name="reset">Reset</button>
+            </form>
+        </div><!--end of div-->
+    </div><!--end of container-->
+
+    <p class="pTag">Store Name & Password : Name : Amit Parmar Pass : 12345</p>
+
+    <script>
+        function submitData() {
+            // e.preventDefault();
+
+            // LOCAL STORAGE WITH NAME & PASSWORD
+            let name = document.getElementById("fullname").value;
+            localStorage.setItem('fname', name);
+
+            let password = document.getElementById("password").value;
+            localStorage.setItem('password', password);
+
+            // OBJECT WITH STORE METHOD
+            let storeObjectName = {
+                name: "amit parmar",
+                password: "12345",
+            };
+
+            let formDataCatchName = document.getElementById("fullname");
+            let formDataCatchPass = document.getElementById('password');
+            let valueStoreName = formDataCatchName.value;
+            let valueStorePass = formDataCatchPass.value;
+
+            console.log(valueStoreName);
+            console.log(valueStorePass);
+
+            if (valueStoreName === "" || valueStorePass === "") {
+                alert("Please Check form filed not complated");
+                window.location.replace('registration.html');
+            }
+            else if (valueStoreName == "amit parmar" && valueStorePass == "12345") {
+                window.location.replace('greeting.html');
+
+            }
+            else {
+                alert("Please Check your data is not match...!");
+                window.location.replace('registration.html');
+            }
+        }
+
+    </script>
+</body>
+
+</html>
